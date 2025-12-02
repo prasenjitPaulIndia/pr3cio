@@ -17,7 +17,6 @@ export default function LoginModal({ isOpen, onClose }: { isOpen: boolean; onClo
 
     if (!isOpen) return null;
 
-
     const onSubmit = async () => {
         if (!form.loginId || !form.password) {
             toast.warning("Please fill in all fields");
@@ -28,7 +27,6 @@ export default function LoginModal({ isOpen, onClose }: { isOpen: boolean; onClo
         };
 
         const res = await request("POST", "/users/sign-in", payload);
-        console.log(res)
     }
 
     return (
