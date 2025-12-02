@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+﻿# pr3cio
 
-## Getting Started
+![version](https://img.shields.io/badge/version-0.1.0-blue)
 
-First, run the development server:
+A modern Next.js + TypeScript frontend demo focusing on music/artist marketplace and streaming UI patterns. The project contains reusable UI components (artist cards, top charts, merch, hero, modals), an API hook, and a production-ready build setup.
 
-```bash
+**What this project does**
+
+- Implements a component-based UI built with Next.js (app router) and TypeScript.
+- Uses Tailwind CSS for styling and responsive layouts.
+- Includes reusable components for music/streaming experiences: top artists, trending songs, merchandise, auth modals, and more.
+- Ships with a small API helper (`api/useApi.ts`) to demonstrate client requests using `axios`.
+
+**Why its useful**
+
+- Fast starting point for building music-related frontends or marketplaces.
+- Clean, component-driven structure makes it easy to adapt or extract parts into other projects.
+- Uses modern Next.js (app dir) patterns and TypeScript, so it's aligned with current best practices.
+
+**Main technologies**
+
+- Next.js 16 (app router)
+- React 19 + TypeScript
+- Tailwind CSS
+- Axios for API calls
+- Sonner for notifications
+
+## Quickstart
+
+Prerequisites
+
+- Node.js 18+ recommended
+- npm (comes with Node) — works with yarn/pnpm if preferred
+
+Install dependencies and run locally (PowerShell example):
+
+```powershell
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+npm start
+
+# Lint (if configured)
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage example
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Import and reuse components from the `components/` directory. Example (simplified):
 
-## Learn More
+```tsx
+// app/page.tsx
+import Hero from '../components/hero-section';
 
-To learn more about Next.js, take a look at the following resources:
+export default function Page() {
+  return (
+    <main>
+      <Hero />
+    </main>
+  );
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+You can explore components in `components/` (for example `components/top-artist.tsx`, `components/hero-section.tsx`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project structure (important files)
 
-## Deploy on Vercel
+- `app/` — Next.js app routes and layout
+- `components/` — Reusable UI components
+- `api/useApi.ts` — Small API helper hook
+- `public/assets/images/` — Project images and static assets
+- `package.json` — Scripts and dependencies
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Development notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Tailwind CSS is configured via `postcss.config.mjs` and `tailwindcss` dependency.
+- Type definitions and linting are available via the dev dependencies in `package.json`.
+
+## Where to get help
+
+- Open an issue or submit a pull request on the repository.
+- If you need to discuss ideas, create an issue describing your goal and environment.
+
+## Contributing
+
+Contributions are welcome. Please open an issue first to discuss major changes. For small fixes, submit a pull request including a short description of the change and why its needed.
+
+If you'd like to add contribution guidelines, create a `CONTRIBUTING.md` file at the repository root and it will be linked here.
+
+## Maintainers
+
+- Repository owner: `prasenjitPaulIndia`
+
+## License
+
+No `LICENSE` file found in the repository. Add a `LICENSE` file to specify the project license.
+
+## Next steps / Suggestions
+
+- Add `CONTRIBUTING.md` with contribution and PR guidelines.
+- Add a `LICENSE` file to make reuse terms clear.
+- Add CI (GitHub Actions) and a test suite if you plan to maintain this project long-term.
+
+---
+
+If you'd like, I can also scaffold a `CONTRIBUTING.md` and `LICENSE` for a chosen open-source license — tell me which license you prefer.
