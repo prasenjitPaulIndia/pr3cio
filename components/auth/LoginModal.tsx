@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Modal from "../ui/Modal";
 import { useApi } from "@/api/useApi";
+import { toast } from "sonner";
 
 export default function LoginModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void; }) {
     const { request, loading, error } = useApi();
@@ -18,6 +19,10 @@ export default function LoginModal({ isOpen, onClose }: { isOpen: boolean; onClo
 
 
     const onSubmit = async () => {
+        if (!form.loginId || !form.password) {
+            toast.warning("Please fill in all fields");
+            return;
+        }
         const payload = {
             ...form,
         };

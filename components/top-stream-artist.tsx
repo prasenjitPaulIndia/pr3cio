@@ -3,10 +3,10 @@
 import Image from 'next/image';
 
 const topArtists = [
-    { id: '5', title: 'Billie Eilish', image: '/assets/images/artist1.svg' },
-    { id: '6', title: 'Taylor Swift', image: '/assets/images/artist2.svg' },
-    { id: '7', title: 'Drake', image: '/assets/images/artist3.svg' },
-    { id: '8', title: 'Post Malone', image: '/assets/images/artist4.svg' },
+    { id: '5', title: 'Billie Eilish', image: '/assets/images/artist1.svg', glowColor: '#550413' },
+    { id: '6', title: 'Taylor Swift', image: '/assets/images/artist2.svg', glowColor: '#000000' },
+    { id: '7', title: 'Drake', image: '/assets/images/artist3.svg', glowColor: '#A8492C' },
+    { id: '8', title: 'Post Malone', image: '/assets/images/artist4.svg', glowColor: '#8E7058' },
 ];
 
 export function TopStreamArtist() {
@@ -19,6 +19,7 @@ export function TopStreamArtist() {
                         <div key={item.id} className="relative cursor-pointer bg-black rounded-3xl p-3 mb-6 md:mb-0"
                         >
                             <div className="relative w-full h-[90%] aspect-square -top-12!">
+                                <div className='h-60 left-[50%] top-14 absolute aspect-square rounded-full blur-lg' style={{ transform: 'translateX(-50%)', backgroundImage: `radial-gradient(circle, transparent, ${item?.glowColor})` }}></div>
                                 <Image
                                     src={item.image}
                                     alt={item.title}

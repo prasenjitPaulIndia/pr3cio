@@ -30,7 +30,7 @@ export default function RootLayout({
         className={` ${alumniSans.className} ${poppins.variable} antialiased`}
       >
         <div className="bg__texture"></div>
-        <Toaster theme="dark" visibleToasts={3} duration={2000} />
+        <Toaster theme="dark" visibleToasts={3} duration={2000} richColors />
         {children}
       </body>
     </html>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Modal from "../ui/Modal";
 import { useApi } from "@/api/useApi";
+import { toast } from "sonner";
 
 export default function SignupModal({ isOpen, onClose }) {
     const { request, loading, error } = useApi();
@@ -42,6 +43,10 @@ export default function SignupModal({ isOpen, onClose }) {
 
     // --- SUBMIT SIGNUP ---
     const onSubmitSignup = async () => {
+        if (!form.name || !form.user_name || !form.email || !form.phone || !form.password) {
+            toast.warning("Please fill in all fields");
+            return;
+        }
         const payload = {
             ...form,
             avatar: avatarPreview,
