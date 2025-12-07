@@ -24,6 +24,7 @@ A modern Next.js + TypeScript frontend demo focusing on music/artist marketplace
 - Tailwind CSS
 - Axios for API calls
 - Sonner for notifications
+- Zod for Validation
 
 ## Quickstart
 
