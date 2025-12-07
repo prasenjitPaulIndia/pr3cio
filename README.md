@@ -94,17 +94,3 @@ If you'd like to add contribution guidelines, create a `CONTRIBUTING.md` file at
 ## Maintainers
 
 - Repository owner: `prasenjitPaulIndia`
-
-## License
-
-No `LICENSE` file found in the repository. Add a `LICENSE` file to specify the project license.
-
-## Next steps / Suggestions
-
-- Add `CONTRIBUTING.md` with contribution and PR guidelines.
-- Add a `LICENSE` file to make reuse terms clear.
-- Add CI (GitHub Actions) and a test suite if you plan to maintain this project long-term.
-
----
-
-If you'd like, I can also scaffold a `CONTRIBUTING.md` and `LICENSE` for a chosen open-source license — tell me which license you prefer.
