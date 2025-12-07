@@ -83,13 +83,6 @@ You can explore components in `components/` (for example `components/top-artist.
 ## Where to get help
 
 - Open an issue or submit a pull request on the repository.
-- If you need to discuss ideas, create an issue describing your goal and environment.
-
-## Contributing
-
-Contributions are welcome. Please open an issue first to discuss major changes. For small fixes, submit a pull request including a short description of the change and why its needed.
-
-If you'd like to add contribution guidelines, create a `CONTRIBUTING.md` file at the repository root and it will be linked here.
 
 ## Maintainers
 
