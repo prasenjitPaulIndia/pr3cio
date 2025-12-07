@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "../ui/Modal";
 import { useApi } from "@/api/useApi";
 import { toast } from "sonner";
+import { z, ZodError } from "zod";
 
 export default function SignupModal({ isOpen, onClose }) {
     const { request, loading, error } = useApi();
@@ -24,6 +25,14 @@ export default function SignupModal({ isOpen, onClose }) {
     const [uploadedAvatar, setUploadedAvatar] = useState(null);
     const avatarPreview = uploadedAvatar || diceAvatar;
 
+    const formValidation = z.object({
+        name: z.string().min(1, "Name is required"),
+        user_name: z.string().min(1, "Username is required"),
+        email: z.string().email("Invalid email address"),
+        phone: z.string().min(1, "Phone number is required"),
+        password: z.string().min(8, "Password must be at least 8 characters"),
+    })
+
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
@@ -43,6 +52,14 @@ export default function SignupModal({ isOpen, onClose }) {
 
     // --- SUBMIT SIGNUP ---
     const onSubmitSignup = async () => {
+        try {
+            formValidation.parse(form);
+        } catch (error) {
+            const formattedError = JSON.parse(error)[0]?.message;
+            const errorMessage = formattedError || "Invalid input";
+            toast.error(errorMessage);
+            return;
+        }
         if (!form.name || !form.user_name || !form.email || !form.phone || !form.password) {
             toast.warning("Please fill in all fields");
             return;

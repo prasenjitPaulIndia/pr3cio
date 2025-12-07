@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "../ui/Modal";
 import { useApi } from "@/api/useApi";
 import { toast } from "sonner";
+import z from "zod";
 
 export default function LoginModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void; }) {
     const { request, loading, error } = useApi();
@@ -15,18 +16,31 @@ export default function LoginModal({ isOpen, onClose }: { isOpen: boolean; onClo
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
+    const formValidation = z.object({
+        loginId: z.string().min(1, "Email/Phone is required"),
+        password: z.string().min(8, "Password is required"),
+    })
+
     if (!isOpen) return null;
 
     const onSubmit = async () => {
-        if (!form.loginId || !form.password) {
-            toast.warning("Please fill in all fields");
+        try {
+            formValidation.parse(form);
+            if (!form.loginId || !form.password) {
+                toast.warning("Please fill in all fields");
+                return;
+            }
+            const payload = {
+                ...form,
+            };
+
+            const res = await request("POST", "/users/sign-in", payload);
+        } catch (error) {
+            const formattedError = JSON.parse(error)[0]?.message;
+            const errorMessage = formattedError || "Invalid input";
+            toast.error(errorMessage);
             return;
         }
-        const payload = {
-            ...form,
-        };
-
-        const res = await request("POST", "/users/sign-in", payload);
     }
 
     return (
